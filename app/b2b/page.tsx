@@ -74,7 +74,7 @@ const benefits = [
   },
 ];
 
-export const industries = [
+const industries = [
   "Manufacturing & Factories",
   "Warehouses & Logistics",
   "Corporate Offices",
