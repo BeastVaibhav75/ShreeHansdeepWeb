@@ -248,7 +248,7 @@ export default function B2BPage() {
       </section>
 
       {/* B2B Inquiry Form Section */}
-      <section id="inquiry" className="section-padding bg-gradient-to-br from-forest-600 to-forest-700 text-white">
+      <section id="inquiry" className="section-padding bg-wood-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -258,10 +258,10 @@ export default function B2BPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-charcoal-900 mb-4">
                 Request a B2B Quote
               </h2>
-              <p className="text-lg text-forest-100 max-w-2xl mx-auto">
+              <p className="text-lg text-charcoal-600 max-w-2xl mx-auto">
                 Fill out the form below and our B2B team will get back to you with 
                 competitive pricing and customized solutions for your business needs.
               </p>
