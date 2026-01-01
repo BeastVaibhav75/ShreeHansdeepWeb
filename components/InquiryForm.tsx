@@ -31,17 +31,6 @@ export default function InquiryForm() {
 
       if (data.success) {
         setIsSubmitted(true);
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            name: "",
-            phone: "",
-            email: "",
-            requirementType: "",
-            message: "",
-          });
-        }, 3000);
       } else {
         alert(data.message || "There was an error submitting your inquiry. Please try again.");
         setIsSubmitting(false);
@@ -93,7 +82,7 @@ export default function InquiryForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="Your full name"
         />
       </div>
@@ -109,13 +98,13 @@ export default function InquiryForm() {
           required
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="01274-261129 or +91 98121 25410"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-charcoal-900 mb-2">
+        <label htmlFor="email" className="block text-sm font-semibold text-charcoal-900 dark:text-white mb-2">
           Email *
         </label>
         <input
@@ -125,13 +114,13 @@ export default function InquiryForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="your.email@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="requirementType" className="block text-sm font-semibold text-charcoal-900 mb-2">
+        <label htmlFor="requirementType" className="block text-sm font-semibold text-charcoal-900 dark:text-white mb-2">
           Requirement Type *
         </label>
         <select
@@ -140,7 +129,7 @@ export default function InquiryForm() {
           required
           value={formData.requirementType}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
         >
           <option value="">Select requirement type</option>
           <option value="home">Home Furniture</option>
@@ -163,7 +152,7 @@ export default function InquiryForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all resize-none"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="Tell us about your requirements..."
         />
       </div>

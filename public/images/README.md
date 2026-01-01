@@ -48,3 +48,4 @@ All images are automatically optimized by Next.js:
 - Lazy loading
 - Blur placeholder support
 
+

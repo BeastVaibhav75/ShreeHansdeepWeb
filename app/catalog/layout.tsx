@@ -13,3 +13,4 @@ export default function CatalogLayout({
   return <>{children}</>;
 }
 
+

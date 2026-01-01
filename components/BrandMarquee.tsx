@@ -7,35 +7,38 @@ import { useState } from "react";
 const brands = [
   {
     name: "Supreme",
-    logo: "https://via.placeholder.com/150x80/1a1a1a/ffffff?text=Supreme",
-  },
-  {
-    name: "Sleepwell",
-    logo: "https://via.placeholder.com/150x80/0066cc/ffffff?text=Sleepwell",
-  },
-  {
-    name: "Kurlon",
-    logo: "https://via.placeholder.com/150x80/ff6600/ffffff?text=Kurlon",
-  },
-  {
-    name: "Wakefit",
-    logo: "https://via.placeholder.com/150x80/000000/ffffff?text=Wakefit",
-  },
-  {
-    name: "Century",
-    logo: "https://via.placeholder.com/150x80/cc0000/ffffff?text=Century",
-  },
-  {
-    name: "Godrej",
-    logo: "https://via.placeholder.com/150x80/0066cc/ffffff?text=Godrej",
+    logo: "/images/brands/supreme.png",
+    fallbackColor: "#1a1a1a",
   },
   {
     name: "Nilkamal",
-    logo: "https://via.placeholder.com/150x80/ff0000/ffffff?text=Nilkamal",
+    logo: "/images/brands/nilkamal.jpg",
+    fallbackColor: "#ff0000",
+  },
+  {
+    name: "Godrej",
+    logo: "/images/brands/Godrej.png",
+    fallbackColor: "#0066cc",
   },
   {
     name: "Durian",
-    logo: "https://via.placeholder.com/150x80/333333/ffffff?text=Durian",
+    logo: "/images/brands/durian.svg",
+    fallbackColor: "#333333",
+  },
+  {
+    name: "Sleepwell",
+    logo: "/images/brands/Sleepwell.svg",
+    fallbackColor: "#0066cc",
+  },
+  {
+    name: "Kurlon",
+    logo: "/images/brands/kurlon.png",
+    fallbackColor: "#ff6600",
+  },
+  {
+    name: "Wakefit",
+    logo: "/images/brands/wakefit.png",
+    fallbackColor: "#000000",
   },
 ];
 
@@ -80,25 +83,55 @@ export default function BrandMarquee() {
   );
 }
 
-function BrandLogo({ brand }: { brand: { name: string; logo: string } }) {
+function BrandLogo({ brand }: { brand: { name: string; logo: string; fallbackColor: string } }) {
   const [imageError, setImageError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(brand.logo);
+
+  // Try different image formats
+  const imageFormats = [
+    brand.logo,
+    brand.logo.replace('.png', '.jpg'),
+    brand.logo.replace('.png', '.jpeg'),
+    brand.logo.replace('.png', '.svg'),
+    brand.logo.replace('.png', '.webp'),
+  ];
+
+  const tryNextImage = () => {
+    const currentIndex = imageFormats.indexOf(currentSrc);
+    if (currentIndex < imageFormats.length - 1) {
+      setCurrentSrc(imageFormats[currentIndex + 1]);
+      setImageError(false);
+    } else {
+      setImageError(true);
+    }
+  };
+
+  // Generate SVG fallback
+  const svgFallback = `data:image/svg+xml,${encodeURIComponent(`
+    <svg width="150" height="80" xmlns="http://www.w3.org/2000/svg">
+      <rect width="150" height="80" fill="${brand.fallbackColor}" rx="8"/>
+      <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="14" font-weight="bold" 
+            fill="white" text-anchor="middle" dominant-baseline="middle">${brand.name}</text>
+    </svg>
+  `)}`;
 
   return (
     <div className="flex-shrink-0 w-[150px] h-[80px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
       {imageError ? (
-        <div className="w-full h-full bg-charcoal-200 rounded flex items-center justify-center">
-          <span className="text-charcoal-500 text-sm font-semibold">
-            {brand.name}
-          </span>
-        </div>
+        <img
+          src={svgFallback}
+          alt={`${brand.name} logo`}
+          className="object-contain max-w-full max-h-full"
+        />
       ) : (
         <Image
-          src={brand.logo}
-          alt={brand.name}
+          src={currentSrc}
+          alt={`${brand.name} logo`}
           width={150}
           height={80}
           className="object-contain max-w-full max-h-full"
-          onError={() => setImageError(true)}
+          onError={tryNextImage}
+          unoptimized
         />
       )}
     </div>

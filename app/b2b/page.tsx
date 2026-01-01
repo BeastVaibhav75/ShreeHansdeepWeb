@@ -342,20 +342,6 @@ function B2BInquiryForm() {
 
       if (data.success) {
         setIsSubmitted(true);
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            companyName: "",
-            contactPerson: "",
-            phone: "",
-            email: "",
-            industry: "",
-            requirementType: "",
-            quantity: "",
-            message: "",
-          });
-        }, 3000);
       } else {
         alert(data.message || "There was an error submitting your inquiry. Please try again.");
         setIsSubmitting(false);
@@ -404,7 +390,7 @@ function B2BInquiryForm() {
             required
             value={formData.companyName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="Your company name"
           />
         </div>
@@ -420,7 +406,7 @@ function B2BInquiryForm() {
             required
             value={formData.contactPerson}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="Your name"
           />
         </div>
@@ -438,7 +424,7 @@ function B2BInquiryForm() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="01274-261129 or +91 98121 25410"
           />
         </div>
@@ -454,7 +440,7 @@ function B2BInquiryForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="your.email@company.com"
           />
         </div>
@@ -471,7 +457,7 @@ function B2BInquiryForm() {
             required
             value={formData.industry}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           >
             <option value="">Select industry</option>
             {industries.map((ind) => (
@@ -492,7 +478,7 @@ function B2BInquiryForm() {
             required
             value={formData.requirementType}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           >
             <option value="">Select type</option>
             <option value="industrial-packing">Industrial Packing Materials</option>
@@ -514,7 +500,7 @@ function B2BInquiryForm() {
           name="quantity"
           value={formData.quantity}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="e.g., 100 units, 50 pallets, etc."
         />
       </div>
@@ -530,7 +516,7 @@ function B2BInquiryForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all resize-none"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all resize-none bg-white text-black"
           placeholder="Tell us about your project requirements, timeline, specifications, etc."
         />
       </div>

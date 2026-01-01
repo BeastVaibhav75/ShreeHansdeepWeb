@@ -37,3 +37,4 @@ Add your brand logo images here. The marquee component will automatically use th
 
 The component currently uses placeholder images. Once you add real logos, update the paths in `components/BrandMarquee.tsx`.
 
+

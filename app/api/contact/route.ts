@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const RECIPIENT_EMAIL = "shreehansdeep94@gmail.com";
+const SENDER_EMAIL = "shreehansdeep94@gmail.com";
+const APP_PASSWORD = "vbve sujh yphm tebs";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,66 +16,94 @@ export async function POST(request: NextRequest) {
       ? `B2B Inquiry from ${companyName || name}`
       : `Inquiry from ${name}`;
 
-    const emailBody = isB2B
+    const tableRows = isB2B
       ? `
-New B2B Inquiry Received
-
-Company Details:
-- Company Name: ${companyName || "N/A"}
-- Contact Person: ${contactPerson || name}
-- Industry: ${industry || "N/A"}
-- Phone: ${phone}
-- Email: ${email}
-
-Requirement Details:
-- Requirement Type: ${requirementType || "N/A"}
-- Estimated Quantity: ${quantity || "Not specified"}
-
-Message:
-${message || "No message provided"}
-
----
-This inquiry was submitted through the website contact form.
-      `.trim()
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Company Name</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${companyName || "N/A"}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Contact Person</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${contactPerson || name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Industry</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${industry || "N/A"}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Phone</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${phone}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Email</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Requirement Type</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${requirementType || "N/A"}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Estimated Quantity</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${quantity || "Not specified"}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Message</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${message || "No message provided"}</td>
+        </tr>
+      `
       : `
-New Inquiry Received
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Name</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Phone</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${phone}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Email</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Requirement Type</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${requirementType || "N/A"}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Message</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${message || "No message provided"}</td>
+        </tr>
+      `;
 
-Contact Details:
-- Name: ${name}
-- Phone: ${phone}
-- Email: ${email}
-- Requirement Type: ${requirementType || "N/A"}
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">${isB2B ? "New B2B Inquiry Received" : "New Inquiry Received"}</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <tbody>
+            ${tableRows}
+          </tbody>
+        </table>
+        <p style="margin-top: 30px; color: #666; font-size: 12px;">
+          This inquiry was submitted through the SHD website contact form.
+        </p>
+      </div>
+    `;
 
-Message:
-${message || "No message provided"}
+    // Create a transporter using Gmail
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: SENDER_EMAIL,
+        pass: APP_PASSWORD,
+      },
+    });
 
----
-This inquiry was submitted through the website contact form.
-      `.trim();
-
-    // In production, you would use an email service like:
-    // - Resend
-    // - SendGrid
-    // - Nodemailer with SMTP
-    // - AWS SES
-    
-    // For now, we'll log it and return success
-    // You can integrate with an email service later
-    console.log("=== NEW INQUIRY ===");
-    console.log("To:", RECIPIENT_EMAIL);
-    console.log("Subject:", subject);
-    console.log("Body:", emailBody);
-    console.log("===================");
-
-    // TODO: Integrate with email service
-    // Example with Resend:
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'website@yourdomain.com',
-    //   to: RECIPIENT_EMAIL,
-    //   subject: subject,
-    //   text: emailBody,
-    // });
+    // Send mail with defined transport object
+    await transporter.sendMail({
+      from: `"SHD Website" <${SENDER_EMAIL}>`, // sender address
+      to: RECIPIENT_EMAIL, // list of receivers
+      subject: subject, // Subject line
+      html: emailHtml, // html body
+    });
 
     return NextResponse.json(
       { 
@@ -92,4 +123,3 @@ This inquiry was submitted through the website contact form.
     );
   }
 }
-

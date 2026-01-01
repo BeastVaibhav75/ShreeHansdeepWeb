@@ -13,3 +13,4 @@ export default function B2BLayout({
   return <>{children}</>;
 }
 
+
