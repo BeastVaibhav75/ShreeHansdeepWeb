@@ -56,10 +56,10 @@ export default function InquiryForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-forest-50 border-2 border-forest-600 rounded-lg p-8 text-center"
+        className="bg-wood-50 border-2 border-wood-700 rounded-lg p-8 text-center"
       >
         <div className="text-5xl mb-4">✅</div>
-        <h3 className="text-2xl font-bold text-forest-700 mb-2">
+        <h3 className="text-2xl font-bold text-wood-800 mb-2">
           Thank You!
         </h3>
         <p className="text-charcoal-700">
@@ -82,7 +82,7 @@ export default function InquiryForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="Your full name"
         />
       </div>
@@ -98,7 +98,7 @@ export default function InquiryForm() {
           required
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="01274-261129 or +91 98121 25410"
         />
       </div>
@@ -114,7 +114,7 @@ export default function InquiryForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="your.email@example.com"
         />
       </div>
@@ -129,7 +129,7 @@ export default function InquiryForm() {
           required
           value={formData.requirementType}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
         >
           <option value="">Select requirement type</option>
           <option value="home">Home Furniture</option>
@@ -152,7 +152,7 @@ export default function InquiryForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="Tell us about your requirements..."
         />
       </div>

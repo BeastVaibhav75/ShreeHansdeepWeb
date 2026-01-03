@@ -110,7 +110,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-wood-100 via-wood-50 to-forest-50 section-padding">
+      <section className="relative bg-gradient-to-br from-wood-100 via-wood-50 to-wood-100 section-padding">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ export default function Home() {
           >
             <h1 className="text-4xl md:text-6xl font-bold text-charcoal-900 mb-6">
               Premium Wood & Industrial Solutions
-              <span className="block text-forest-700 mt-2">
+              <span className="block text-wood-800 mt-2">
                 for Homes, Offices & Factories
               </span>
             </h1>
@@ -136,7 +136,7 @@ export default function Home() {
               <Link href="/contact" className="btn-outline">
                 Get a Quote
               </Link>
-              <Link href="/b2b" className="btn-outline border-forest-600 text-forest-700 hover:bg-forest-600 hover:text-white">
+              <Link href="/b2b" className="btn-outline border-wood-700 text-wood-800 hover:bg-wood-700 hover:text-white">
                 B2B Solutions
               </Link>
             </div>
@@ -202,7 +202,7 @@ export default function Home() {
                       </p>
                       <Link
                         href={category.href}
-                        className="text-forest-600 hover:text-forest-700 font-semibold inline-flex items-center"
+                        className="text-wood-700 hover:text-wood-800 font-semibold inline-flex items-center"
                       >
                         Explore
                         <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,7 +264,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-forest-600 to-forest-700 text-white">
+      <section className="section-padding bg-gradient-to-r from-wood-700 to-wood-800 text-white">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -275,14 +275,14 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Get Started?
             </h2>
-            <p className="text-lg mb-8 text-forest-100 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 text-wood-100 max-w-2xl mx-auto">
               Contact us today for a consultation and get a custom quote for your project
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="bg-white text-forest-700 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
+              <Link href="/contact" className="bg-white text-wood-800 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
                 Get a Quote
               </Link>
-              <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-forest-700 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
+              <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-wood-800 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
                 View Catalog
               </Link>
             </div>

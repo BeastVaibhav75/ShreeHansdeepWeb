@@ -49,7 +49,7 @@ export default function Catalog() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-wood-100 via-wood-50 to-forest-50 section-padding">
+      <section className="bg-gradient-to-br from-wood-100 via-wood-50 to-wood-100 section-padding">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function Catalog() {
               onClick={() => setSelectedCategory(null)}
               className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
                 selectedCategory === null
-                  ? "bg-forest-600 text-white shadow-md"
+                  ? "bg-wood-700 text-white shadow-md"
                   : "bg-wood-100 text-charcoal-700 hover:bg-wood-200"
               }`}
             >
@@ -90,7 +90,7 @@ export default function Catalog() {
                 }}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
                   selectedCategory === category.id
-                    ? "bg-forest-600 text-white shadow-md"
+                    ? "bg-wood-700 text-white shadow-md"
                     : "bg-wood-100 text-charcoal-700 hover:bg-wood-200"
                 }`}
               >
@@ -106,7 +106,7 @@ export default function Catalog() {
                 onClick={() => setSelectedSubcategory(null)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
                   selectedSubcategory === null
-                    ? "bg-forest-500 text-white shadow-md"
+                    ? "bg-wood-600 text-white shadow-md"
                     : "bg-wood-50 text-charcoal-700 hover:bg-wood-100"
                 }`}
               >
@@ -118,7 +118,7 @@ export default function Catalog() {
                   onClick={() => setSelectedSubcategory(subcat)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm capitalize ${
                     selectedSubcategory === subcat
-                      ? "bg-forest-500 text-white shadow-md"
+                      ? "bg-wood-600 text-white shadow-md"
                       : "bg-wood-50 text-charcoal-700 hover:bg-wood-100"
                   }`}
                 >
@@ -232,7 +232,7 @@ export default function Catalog() {
                       <p className="text-charcoal-600 text-lg">
                         {category.description}
                       </p>
-                      <p className="text-forest-600 font-semibold mt-2">
+                      <p className="text-wood-700 font-semibold mt-2">
                         {categoryProducts.length} Products
                       </p>
                     </div>
@@ -299,7 +299,7 @@ export default function Catalog() {
                   <p className="text-charcoal-600 mb-4 text-sm">
                     {category.description}
                   </p>
-                  <p className="text-forest-600 font-semibold mb-4">
+                  <p className="text-wood-700 font-semibold mb-4">
                     {categoryProducts.length} Products
                   </p>
                   <button
@@ -311,7 +311,7 @@ export default function Catalog() {
                         document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);
                     }}
-                    className="text-forest-600 hover:text-forest-700 font-semibold inline-flex items-center"
+                    className="text-wood-700 hover:text-wood-800 font-semibold inline-flex items-center"
                   >
                     View Products
                     <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

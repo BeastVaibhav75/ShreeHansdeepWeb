@@ -6,7 +6,7 @@ export default function About() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-wood-100 via-wood-50 to-forest-50 section-padding">
+      <section className="bg-gradient-to-br from-wood-100 via-wood-50 to-wood-100 section-padding">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +152,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-r from-forest-600 to-forest-700 text-white">
+      <section className="section-padding bg-gradient-to-r from-wood-700 to-wood-800 text-white">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -163,13 +163,13 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Let's Work Together
             </h2>
-            <p className="text-lg mb-8 text-forest-100 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 text-wood-100 max-w-2xl mx-auto">
               Experience the difference that quality craftsmanship makes. 
               Contact us today to discuss your project.
             </p>
             <a
               href="/contact"
-              className="bg-white text-forest-700 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg inline-block"
+              className="bg-white text-wood-800 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg inline-block"
             >
               Get in Touch
             </a>

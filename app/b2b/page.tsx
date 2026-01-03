@@ -89,7 +89,7 @@ export default function B2BPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-charcoal-900 via-charcoal-800 to-forest-800 text-white section-padding">
+      <section className="relative bg-gradient-to-br from-charcoal-900 via-charcoal-800 to-wood-900 text-white section-padding">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -99,7 +99,7 @@ export default function B2BPage() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               B2B Industrial Solutions
-              <span className="block text-forest-300 mt-2">
+              <span className="block text-wood-300 mt-2">
                 Premium Wood & Metal Works for Businesses
               </span>
             </h1>
@@ -109,7 +109,7 @@ export default function B2BPage() {
               Quality, reliability, and competitive pricing for your business needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/b2b#inquiry" className="bg-forest-600 hover:bg-forest-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg text-lg">
+              <Link href="/b2b#inquiry" className="bg-wood-700 hover:bg-wood-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg text-lg">
                 Request B2B Quote
               </Link>
               <Link href="/catalog#industrial" className="border-2 border-white text-white hover:bg-white hover:text-charcoal-900 px-8 py-4 rounded-lg font-semibold transition-all duration-200 text-lg">
@@ -158,7 +158,7 @@ export default function B2BPage() {
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start text-charcoal-700">
-                      <svg className="w-5 h-5 text-forest-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-wood-700 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {feature}
@@ -238,7 +238,7 @@ export default function B2BPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-forest-50 p-6 rounded-lg text-center border-2 border-forest-200 hover:border-forest-400 transition-colors"
+                className="bg-wood-50 p-6 rounded-lg text-center border-2 border-wood-200 hover:border-wood-400 transition-colors"
               >
                 <p className="font-semibold text-charcoal-900">{industry}</p>
               </motion.div>
@@ -281,7 +281,7 @@ export default function B2BPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-forest-600 to-forest-700 text-white">
+      <section className="section-padding bg-gradient-to-r from-wood-700 to-wood-800 text-white">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -292,11 +292,11 @@ export default function B2BPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Partner With Us?
             </h2>
-            <p className="text-lg mb-8 text-forest-100 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 text-wood-100 max-w-2xl mx-auto">
               Contact our B2B team today to discuss your requirements and get started
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/b2b#inquiry" className= "bg-white text-forest-700 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
+              <Link href="/b2b#inquiry" className= "bg-white text-wood-800 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
                 Get B2B Quote
               </Link>
               <Link href="/contact" className="border-2 border-white text-white hover:bg-white hover:text-charcoal-900 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
@@ -364,9 +364,9 @@ function B2BInquiryForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-forest-50 border-2 border-forest-600 rounded-lg p-8 text-center">
+      <div className="bg-wood-50 border-2 border-wood-700 rounded-lg p-8 text-center">
         <div className="text-5xl mb-4">✅</div>
-        <h3 className="text-2xl font-bold text-forest-700 mb-2">
+        <h3 className="text-2xl font-bold text-wood-800 mb-2">
           Thank You!
         </h3>
         <p className="text-charcoal-700">
@@ -390,7 +390,7 @@ function B2BInquiryForm() {
             required
             value={formData.companyName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="Your company name"
           />
         </div>
@@ -406,7 +406,7 @@ function B2BInquiryForm() {
             required
             value={formData.contactPerson}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="Your name"
           />
         </div>
@@ -424,7 +424,7 @@ function B2BInquiryForm() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="01274-261129 or +91 98121 25410"
           />
         </div>
@@ -440,7 +440,7 @@ function B2BInquiryForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
             placeholder="your.email@company.com"
           />
         </div>
@@ -457,7 +457,7 @@ function B2BInquiryForm() {
             required
             value={formData.industry}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           >
             <option value="">Select industry</option>
             {industries.map((ind) => (
@@ -478,7 +478,7 @@ function B2BInquiryForm() {
             required
             value={formData.requirementType}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+            className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           >
             <option value="">Select type</option>
             <option value="industrial-packing">Industrial Packing Materials</option>
@@ -500,7 +500,7 @@ function B2BInquiryForm() {
           name="quantity"
           value={formData.quantity}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all bg-white text-black"
           placeholder="e.g., 100 units, 50 pallets, etc."
         />
       </div>
@@ -516,7 +516,7 @@ function B2BInquiryForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-forest-500 focus:border-transparent outline-none transition-all resize-none bg-white text-black"
+          className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-wood-600 focus:border-transparent outline-none transition-all resize-none bg-white text-black"
           placeholder="Tell us about your project requirements, timeline, specifications, etc."
         />
       </div>

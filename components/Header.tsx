@@ -46,7 +46,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-charcoal-700 hover:text-forest-600 font-medium transition-colors duration-200"
+                className="text-charcoal-700 hover:text-wood-700 font-medium transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -98,7 +98,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-charcoal-700 hover:text-forest-600 font-medium transition-colors duration-200"
+                    className="text-charcoal-700 hover:text-wood-700 font-medium transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
