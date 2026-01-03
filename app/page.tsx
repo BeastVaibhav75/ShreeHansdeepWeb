@@ -3,44 +3,71 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import BrandMarquee from "@/components/BrandMarquee";
+import { products, categories } from "@/data/products";
+
+// Helper function to get random product image from a category
+const getRandomProductImage = (categoryId: string): string => {
+  const categoryProducts = products.filter((p) => p.category === categoryId);
+  if (categoryProducts.length === 0) {
+    // Fallback to placeholder based on category
+    const placeholders: Record<string, string> = {
+      "home-furniture": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+      "office-furniture": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+      "industrial": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+      "custom-woodwork": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop",
+      "metal-works": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
+      "almira": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop",
+    };
+    return placeholders[categoryId] || placeholders["home-furniture"];
+  }
+  const randomIndex = Math.floor(Math.random() * categoryProducts.length);
+  return categoryProducts[randomIndex].image;
+};
 
 const productCategories = [
   {
     title: "Home Furniture",
+    categoryId: "home-furniture",
     description: "Elegant and durable furniture for your home",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
     href: "/catalog#home-furniture",
     icon: "🏠",
   },
   {
     title: "Office Furniture",
+    categoryId: "office-furniture",
     description: "Professional workspace solutions",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
     href: "/catalog#office-furniture",
     icon: "💼",
   },
   {
     title: "Industrial Packing",
+    categoryId: "industrial",
     description: "Heavy-duty packing materials for factories",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
     href: "/catalog#industrial",
     icon: "📦",
   },
   {
     title: "Custom Woodwork",
+    categoryId: "custom-woodwork",
     description: "Bespoke interior and furniture solutions",
-    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop",
     href: "/catalog#custom-woodwork",
     icon: "🪵",
   },
   {
     title: "Metal Works",
+    categoryId: "metal-works",
     description: "M.S. & S.S. fabrication and structures",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
     href: "/catalog#metal-works",
     icon: "⚙️",
+  },
+  {
+    title: "Almira",
+    categoryId: "almira",
+    description: "Premium storage solutions with elegant design",
+    href: "/catalog#almira",
+    icon: "🗄️",
   },
 ];
 
@@ -68,6 +95,18 @@ const strengths = [
 ];
 
 export default function Home() {
+  // Generate random product images for each category on component mount
+  const [categoryImages, setCategoryImages] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    // Generate random images for each category
+    const images: Record<string, string> = {};
+    productCategories.forEach((category) => {
+      images[category.categoryId] = getRandomProductImage(category.categoryId);
+    });
+    setCategoryImages(images);
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
@@ -127,6 +166,8 @@ export default function Home() {
             {productCategories.map((category, index) => {
               const CategoryCard = () => {
                 const [imageError, setImageError] = useState(false);
+                const categoryImage = categoryImages[category.categoryId] || getRandomProductImage(category.categoryId);
+                
                 return (
                   <motion.div
                     key={category.title}
@@ -143,7 +184,7 @@ export default function Home() {
                         </div>
                       ) : (
                         <Image
-                          src={category.image}
+                          src={categoryImage}
                           alt={category.title}
                           fill
                           className="object-cover"

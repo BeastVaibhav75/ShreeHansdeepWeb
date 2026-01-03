@@ -49,3 +49,4 @@ All images are automatically optimized by Next.js:
 - Blur placeholder support
 
 
+

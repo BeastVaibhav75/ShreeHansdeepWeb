@@ -296,7 +296,7 @@ export default function B2BPage() {
               Contact our B2B team today to discuss your requirements and get started
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/b2b#inquiry" className="bg-forest-600 hover:bg-forest-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
+              <Link href="/b2b#inquiry" className= "bg-white text-forest-700 hover:bg-wood-50 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg">
                 Get B2B Quote
               </Link>
               <Link href="/contact" className="border-2 border-white text-white hover:bg-white hover:text-charcoal-900 px-8 py-3 rounded-lg font-semibold transition-all duration-200">

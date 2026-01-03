@@ -2,67 +2,31 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { products, categories } from "@/data/products";
 
-const galleryCategories = [
-  {
-    title: "Modern Sofa Designs",
-    images: [
-      { id: "sofa-1", title: "Modern Sofa 1", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop" },
-      { id: "sofa-2", title: "Modern Sofa 2", image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&h=600&fit=crop" },
-      { id: "sofa-3", title: "Modern Sofa 3", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=600&fit=crop" },
-      { id: "sofa-4", title: "Modern Sofa 4", image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop" },
-      { id: "sofa-5", title: "Modern Sofa 5", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop" },
-      { id: "sofa-6", title: "Modern Sofa 6", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop" },
-    ],
-  },
-  {
-    title: "Dining Sets",
-    images: [
-      { id: "dining-1", title: "Dining Set 1", image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop" },
-      { id: "dining-2", title: "Dining Set 2", image: "https://images.unsplash.com/photo-1556911220-e15b29be8b8f?w=800&h=600&fit=crop" },
-      { id: "dining-3", title: "Dining Set 3", image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop" },
-      { id: "dining-4", title: "Dining Set 4", image: "https://images.unsplash.com/photo-1556911220-e15b29be8b8f?w=800&h=600&fit=crop" },
-      { id: "dining-5", title: "Dining Set 5", image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop" },
-      { id: "dining-6", title: "Dining Set 6", image: "https://images.unsplash.com/photo-1556911220-e15b29be8b8f?w=800&h=600&fit=crop" },
-    ],
-  },
-  {
-    title: "Industrial Packing Products",
-    images: [
-      { id: "industrial-1", title: "Industrial Product 1", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" },
-      { id: "industrial-2", title: "Industrial Product 2", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-      { id: "industrial-3", title: "Industrial Product 3", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" },
-      { id: "industrial-4", title: "Industrial Product 4", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-      { id: "industrial-5", title: "Industrial Product 5", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" },
-      { id: "industrial-6", title: "Industrial Product 6", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-    ],
-  },
-  {
-    title: "Office Interior Setups",
-    images: [
-      { id: "office-1", title: "Office Setup 1", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop" },
-      { id: "office-2", title: "Office Setup 2", image: "https://images.unsplash.com/photo-1497366754035-f200464aeb58?w=800&h=600&fit=crop" },
-      { id: "office-3", title: "Office Setup 3", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop" },
-      { id: "office-4", title: "Office Setup 4", image: "https://images.unsplash.com/photo-1497366754035-f200464aeb58?w=800&h=600&fit=crop" },
-      { id: "office-5", title: "Office Setup 5", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop" },
-      { id: "office-6", title: "Office Setup 6", image: "https://images.unsplash.com/photo-1497366754035-f200464aeb58?w=800&h=600&fit=crop" },
-    ],
-  },
-  {
-    title: "Custom Metal-Wood Furniture",
-    images: [
-      { id: "custom-1", title: "Custom Furniture 1", image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop" },
-      { id: "custom-2", title: "Custom Furniture 2", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-      { id: "custom-3", title: "Custom Furniture 3", image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop" },
-      { id: "custom-4", title: "Custom Furniture 4", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-      { id: "custom-5", title: "Custom Furniture 5", image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=600&fit=crop" },
-      { id: "custom-6", title: "Custom Furniture 6", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" },
-    ],
-  },
-];
+// Helper function to get products by category and limit the number
+const getProductsByCategory = (categoryId: string, limit: number = 12) => {
+  return products
+    .filter((p) => p.category === categoryId)
+    .slice(0, limit)
+    .map((product) => ({
+      id: product.id,
+      title: product.name,
+      image: product.image,
+    }));
+};
 
 export default function Portfolio() {
+  // Create gallery categories from actual product categories
+  const galleryCategories = useMemo(() => {
+    return categories.map((category) => ({
+      title: category.name,
+      categoryId: category.id,
+      images: getProductsByCategory(category.id, 12),
+    })).filter((cat) => cat.images.length > 0);
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
@@ -89,7 +53,7 @@ export default function Portfolio() {
         <div className="container-custom">
           {galleryCategories.map((category, categoryIndex) => (
             <motion.div
-              key={category.title}
+              key={category.categoryId}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -99,7 +63,7 @@ export default function Portfolio() {
               <h2 className="text-3xl font-bold text-charcoal-900 mb-8 text-center">
                 {category.title}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {category.images.map((image, imageIndex) => {
                   const PortfolioImage = () => {
                     const [imageError, setImageError] = useState(false);
@@ -129,7 +93,7 @@ export default function Portfolio() {
                           />
                         )}
                         <div className="absolute inset-0 bg-charcoal-900 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                          <span className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity text-center px-4">
                             {image.title}
                           </span>
                         </div>

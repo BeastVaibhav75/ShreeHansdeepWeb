@@ -21,11 +21,6 @@ const brands = [
     fallbackColor: "#0066cc",
   },
   {
-    name: "Durian",
-    logo: "/images/brands/durian.svg",
-    fallbackColor: "#333333",
-  },
-  {
     name: "Sleepwell",
     logo: "/images/brands/Sleepwell.svg",
     fallbackColor: "#0066cc",
@@ -39,6 +34,16 @@ const brands = [
     name: "Wakefit",
     logo: "/images/brands/wakefit.png",
     fallbackColor: "#000000",
+  },
+  {
+    name: "Geeken",
+    logo: "/images/brands/geeken.svg",
+    fallbackColor: "#333333",
+  },
+  {
+    name: "Triveni",
+    logo: "/images/brands/triveni.png",
+    fallbackColor: "#1a1a1a",
   },
 ];
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,17 +20,23 @@ export default function Header() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-forest-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SHD</span>
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="relative w-20 h-20 md:w-24 md:h-24">
+              <Image
+                src="/images/logo.png"
+                alt="Shree Hans Deep Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-charcoal-900">
+              <h1 className="text-xl md:text-2xl font-bold text-charcoal-900">
                 Shree Hans Deep
               </h1>
-              <p className="text-xs text-charcoal-600">Wood Works & Saw Mills</p>
+              <p className="text-xs md:text-sm text-charcoal-600">Wood Works & Saw Mills</p>
             </div>
           </Link>
 
